@@ -2,7 +2,6 @@
 using System.Linq.Expressions;
 using System.Reflection.Metadata.Ecma335;
 
-
 namespace Atividade6
 {
     public partial class Form1 : Form
@@ -26,6 +25,9 @@ namespace Atividade6
 
             // chama a funcao de atualizar o storage ao iniciar o programa
             updateStorage();
+
+            // history text box formating
+            richTextBox1.Text += "\n\n";
         }
 
         // created by hand -> "="
@@ -241,7 +243,9 @@ namespace Atividade6
         {
             richTextBox1.Visible = !richTextBox1.Visible;
             btnHistoryClear.Visible = richTextBox1.Visible;
-            btnStorage.Visible = richTextBox1.Visible;
+            richTextBox2.Visible = !richTextBox2.Visible;
+            storageLabel.Visible = richTextBox2.Visible;
+            historyLabel.Visible = richTextBox1.Visible;
         }
 
         private void btnMS_Click(object sender, EventArgs e)
@@ -268,20 +272,16 @@ namespace Atividade6
 
         private void btnHistoryClear_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = "";
-        }
-
-        private void btnStorage_Click(object sender, EventArgs e)
-        {
-            richTextBox2.Visible = !richTextBox2.Visible;
+            richTextBox1.Text = "\n\n";
         }
 
         private void updateStorage()
         {
             richTextBox2.Text = "";
+            richTextBox2.Text += "\n\n";
             for(int i = 0; i < 10; i++)
             {
-                richTextBox2.Text += i.ToString() + ": " + storage[i].ToString() + "\n";
+                richTextBox2.Text += i.ToString() + ". " + storage[i].ToString() + "\n";
             }
         }
     }
